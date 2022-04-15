@@ -7,6 +7,7 @@ import ProductDetail from "./views/ProductDetail";
 
 function App() {
   const [cart, setCart] = useState<IProducts[]>([]);
+  const [search, setSearch] = useState<string>('');
 
   const handleAddtoCart = (product: IProducts) => {
     const foundProduct = cart.find((item) => item.id === product.id);
@@ -23,12 +24,14 @@ function App() {
     setCart((prev) => prev.filter((item) => item.id !== productId));
   };
 
+  const handleSearch = (value: string) => setSearch(value)
+
   return (
     <main className="max-w-4xl m-auto">
-      <Navbar cart={cart} removeFromCart={handleRemoveFromCart} />
+      <Navbar cart={cart} removeFromCart={handleRemoveFromCart} handleSearch={handleSearch} />
       <Router>
         <Routes>
-          <Route path="/" element={<Products addToCart={handleAddtoCart} />} />
+          <Route path="/" element={<Products addToCart={handleAddtoCart} search={search} />} />
           <Route
             path="product/:productId"
             element={<ProductDetail addToCart={handleAddtoCart} />}

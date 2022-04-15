@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-import type { FC } from "react";
-import type { IProducts } from "../interfaces/Products";
+import { Component, createSignal } from "solid-js";
+import { cart, handleSearch } from "../store";
 import Cart from "./Cart";
 
-interface Props {
-  cart: IProducts[];
-  removeFromCart: (productId: IProducts["id"]) => void;
-  handleSearch: (value: string) => void
-}
-const Navbar: FC<Props> = ({ cart, removeFromCart, handleSearch }) => {
-  const [cartIsVisible, setCartIsVisible] = useState(false);
+
+const Navbar: Component = () => {
+  const [cartIsVisible, setCartIsVisible] = createSignal(false);
   return (
     <nav className="w-full bg-teal-400 flex justify-between items-center p-4 mr-6 mb-4 relative">
       <h3 className="font-mono font-bold text-2xl text-white cursor-pointer">
@@ -29,10 +24,10 @@ const Navbar: FC<Props> = ({ cart, removeFromCart, handleSearch }) => {
           src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.clipartbest.com%2Fcliparts%2Fdc8%2FXja%2Fdc8Xjangi.png&f=1&nofb=1"
           alt="cart-logo"
         />
-        <p className="absolute right-0 bottom-0 p-1 h-6">{cart.length}</p>
+        <p className="absolute right-0 bottom-0 p-1 h-6">{cart.products.length}</p>
       </figure>
-      {cartIsVisible && cart.length > 0 && (
-        <Cart cart={cart} removeFromCart={removeFromCart} />
+      {cartIsVisible() && cart.products.length > 0 && (
+        <Cart />
       )}
     </nav>
   );
