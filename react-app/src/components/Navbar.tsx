@@ -6,14 +6,21 @@ import Cart from "./Cart";
 interface Props {
   cart: IProducts[];
   removeFromCart: (productId: IProducts["id"]) => void;
+  handleSearch: (value: string) => void
 }
-const Navbar: FC<Props> = ({ cart, removeFromCart }) => {
+const Navbar: FC<Props> = ({ cart, removeFromCart, handleSearch }) => {
   const [cartIsVisible, setCartIsVisible] = useState(false);
   return (
     <nav className="w-full bg-teal-400 flex justify-between items-center p-4 mr-6 mb-4 relative">
       <h3 className="font-mono font-bold text-2xl text-white cursor-pointer">
         E-COMMERCE
       </h3>
+      <input
+        className="p-2 flex-1 mx-4 max-w-md bg-white rounded-md"
+        type="text"
+        placeholder="search your product....."
+        onKeyUp={(e) => handleSearch(e.currentTarget.value)}
+      />
       <figure
         className="relative h-12 w-12 object-contain cursor-pointer"
         onClick={() => setCartIsVisible((prev) => !prev)}

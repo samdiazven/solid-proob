@@ -11,9 +11,15 @@ interface Store {
 }
 
 export const cart = createMutable<Store>({
-  products: [],
+  products: JSON.parse(window.localStorage.getItem('products') || '[]'),
   addToCart(product: IProducts) {
+    const foundProduct = this.products.find(item => item.id === product.id)
+    if (foundProduct) {
+      alert('product already exists')
+      return
+    }
     this.products.push(product)
+    window.localStorage.setItem('products', JSON.stringify(this.products))
   },
   removeFromCart(productId: IProducts['id']) {
     this.products = this.products.filter(item => item.id !== productId)
