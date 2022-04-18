@@ -13,7 +13,7 @@ const Navbar: FC<Props> = ({ cart, removeFromCart, handleSearch }) => {
   return (
     <nav className="w-full bg-teal-400 flex justify-between items-center p-4 mr-6 mb-4 relative">
       <h3 className="font-mono font-bold text-2xl text-white cursor-pointer">
-        E-COMMERCE
+       E-COMMERCE
       </h3>
       <input
         className="p-2 flex-1 mx-4 max-w-md bg-white rounded-md"

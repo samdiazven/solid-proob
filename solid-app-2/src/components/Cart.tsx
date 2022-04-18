@@ -1,4 +1,4 @@
-import { Component, For } from "solid-js";
+import { Component, For  } from "solid-js";
 import { cart } from '../store'
 
 
@@ -23,7 +23,6 @@ const Cart: Component = () => {
           </li>
         )}
       </For>
-
       <p>Total: ${cart.total}</p>
     </ul>
   );

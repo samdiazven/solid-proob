@@ -1,7 +1,7 @@
 import type { IProducts } from "../interfaces/Products";
 import { useNavigate } from "solid-app-router";
-import { Component } from "solid-js";
 import { cart } from "../store";
+import type { Component } from "solid-js";
 
 interface Props {
   product: IProducts;

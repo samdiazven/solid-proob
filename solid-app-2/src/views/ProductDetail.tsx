@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "solid-app-router";
-import { Component, createResource, Show } from "solid-js";
+import {  Component, createResource, Show } from "solid-js";
 import Product from "../components/Product";
 import { IProducts } from "../interfaces/Products";
 

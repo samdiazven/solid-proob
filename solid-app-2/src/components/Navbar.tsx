@@ -1,4 +1,4 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createSignal, Show } from "solid-js";
 import { cart, handleSearch } from "../store";
 import Cart from "./Cart";
 
@@ -26,9 +26,9 @@ const Navbar: Component = () => {
         />
         <p className="absolute right-0 bottom-0 p-1 h-6">{cart.products.length}</p>
       </figure>
-      {cartIsVisible() && cart.products.length > 0 && (
+      <Show when={cartIsVisible() && cart.products.length}>
         <Cart />
-      )}
+      </Show>
     </nav>
   );
 };
